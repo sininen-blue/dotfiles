@@ -1,0 +1,76 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty -e fish
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# program launcher
+super + p
+  rofi -no-lazy-grab -show drun -modi drun
+
+# program launcher
+super + r
+  rofi -no-lazy-grab -show run -modi run
+
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + shift + c
+	bspc node -c
+
+#
+# state/flags
+#
+
+# set the window state
+super + f
+	bspc node -t {tiled,floating}
+
+#
+# focus/swap
+#
+
+# focus the next/previous desktop in the current monitor
+super + {Left,Right}
+	bspc desktop -f {prev,next}.local
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}' --follow
+
+#
+# Add keybindings for volume and lightness
+#
+
+XF86AudioRaiseVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ +10% 
+XF86AudioLowerVolume 
+	pactl set-sink-volume @DEFAULT_SINK@ -10%
+XF86AudioMute 
+	pactl set-sink-mute @DEFAULT_SINK@ toggle 
+XF86AudioMicMute 
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle 
+
+XF86MonBrightnessUp 
+        light -A 5
+XF86MonBrightnessDown 
+        light -U 5
+
+XF86AudioPlay 
+	playerctl play-pause
+XF86AudioNext 
+	playerctl next
+XF86AudioPrev 
+	playerctl previous

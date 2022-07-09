@@ -4,6 +4,8 @@ xsetroot -cursor_name left_ptr &
 nitrogen --restore
 
 sxhkd & 
+dunst &
+picom &
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 2
@@ -16,3 +18,6 @@ bspc config focus_follows_pointer true
 
 bspc config focused_border_color "#585b70"
 bspc config normal_border_color "#313244"
+
+bspc rule -a mpv state=floating
+bspc rule -a qView state=floating

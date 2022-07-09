@@ -8,5 +8,8 @@ configuration {
   kb-row-down:       "Down,Control+j";
   kb-remove-to-eol:  "Control+Shift+e";
   kb-accept-entry:   "Control+m,Return,KP_Enter";
+
+  display-drun: "   Apps ";
+  display-run: "   Run ";
 }
-@import "/usr/share/rofi/themes/android_notification.rasi"
+@import "/usr/share/rofi/themes/Arc.rasi"

@@ -6,7 +6,6 @@ nitrogen --restore
 sxhkd & 
 dunst &
 picom &
-lxsession &
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 2

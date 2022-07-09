@@ -42,6 +42,11 @@ super + f
 # focus/swap
 #
 
+# cycle focus
+alt + {_,shift + }Tab
+    bspc node -f {next,prev}.local
+
+
 # focus the next/previous desktop in the current monitor
 super + {Left,Right}
 	bspc desktop -f {prev,next}.local

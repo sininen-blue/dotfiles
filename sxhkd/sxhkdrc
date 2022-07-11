@@ -36,7 +36,10 @@ super + shift + c
 
 # set the window state
 super + f
-	bspc node -t {tiled,floating,fullscreen}
+	bspc node -t {tiled,floating}
+
+super + shift + f
+	bspc node -t fullscreen
 
 #
 # focus/swap
@@ -46,6 +49,8 @@ super + f
 alt + {_,shift + }Tab
     bspc node -f {next,prev}.local
 
+super + {n,e} 
+    bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + {Left,Right}
@@ -60,18 +65,18 @@ super + {_,shift + }{1-9,0}
 #
 
 XF86AudioRaiseVolume 
-	pactl set-sink-volume @DEFAULT_SINK@ +10% && dunstify -t 500 -h string:x-dunst-stack-tag:volume "Volume $(pactl get-sink-volume @DEFAULT_SINK@ | sed -e 's/\s\+/\n/g' | grep [0-9]% | tail -n 1)"
+	pactl set-sink-volume @DEFAULT_SINK@ +10% && dunstify -t 800 -h string:x-dunst-stack-tag:volume "Volume" "$(pactl get-sink-volume @DEFAULT_SINK@ | sed -e 's/\s\+/\n/g' | grep [0-9]% | tail -n 1)"
 XF86AudioLowerVolume 
-	pactl set-sink-volume @DEFAULT_SINK@ -10% && dunstify -t 500 -h string:x-dunst-stack-tag:volume "Volume $(pactl get-sink-volume @DEFAULT_SINK@ | sed -e 's/\s\+/\n/g' | grep [0-9]% | tail -n 1)"
+	pactl set-sink-volume @DEFAULT_SINK@ -10% && dunstify -t 800 -h string:x-dunst-stack-tag:volume "Volume" "$(pactl get-sink-volume @DEFAULT_SINK@ | sed -e 's/\s\+/\n/g' | grep [0-9]% | tail -n 1)"
 XF86AudioMute 
-	pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -t 500 -h string:x-dunst-stack-tag:mute "$(pactl get-sink-mute @DEFAULT_SINK@)"
+	pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -t 800 -h string:x-dunst-stack-tag:mute "Mute" "$(pactl get-sink-mute @DEFAULT_SINK@ | cut -d ' ' -f2-)"
 XF86AudioMicMute 
 	pactl set-source-mute @DEFAULT_SOURCE@ toggle 
 
 XF86MonBrightnessUp 
-        light -A 5 && dunstify -t 500 -h string:x-dunst-stack-tag:brightness "Brightness $(light -G)"
+        light -A 5 && dunstify -t 800 -h string:x-dunst-stack-tag:brightness "Brightness" "$(light -G)"
 XF86MonBrightnessDown 
-        light -U 5 && dunstify -t 500 -h string:x-dunst-stack-tag:brightness "Brightness $(light -G)"
+        light -U 5 && dunstify -t 800 -h string:x-dunst-stack-tag:brightness "Brightness" "$(light -G)"
 
 XF86AudioPlay 
 	playerctl play-pause
@@ -85,4 +90,4 @@ XF86AudioPrev
 #
 
 super + d
-	dunstify -t 4000 -h string:x-dunst-stack-tag:date "$(date)"
+	dunstify -t 4000 -h string:x-dunst-stack-tag:date "time" "$(date +"%I:%M %P")"

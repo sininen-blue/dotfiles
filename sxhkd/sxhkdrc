@@ -36,7 +36,7 @@ super + shift + c
 
 # set the window state
 super + f
-	bspc node -t {tiled,floating}
+	bspc node -t {tiled,floating,fullscreen}
 
 #
 # focus/swap
@@ -49,11 +49,11 @@ alt + {_,shift + }Tab
 
 # focus the next/previous desktop in the current monitor
 super + {Left,Right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}.local && $HOME/.config/sxhkd/switcher.sh
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}' --follow
+	bspc {desktop -f,node -d} '^{1-9,10}' --follow | $HOME/.config/sxhkd/switcher.sh
 
 #
 # Add keybindings for volume and lightness

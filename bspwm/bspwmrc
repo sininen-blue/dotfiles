@@ -4,8 +4,12 @@ xsetroot -cursor_name left_ptr &
 nitrogen --restore
 
 sxhkd & 
+redshift &
 dunst &
 picom &
+
+rofi -no-lazy-grab -show drun -modi drun
+
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width 2
@@ -23,4 +27,5 @@ bspc config normal_border_color "#313244"
 
 bspc rule -a mpv state=floating
 bspc rule -a qView state=floating
-bspc rule -a thunar state=floating
+bspc rule -a Video-downloader state=floating
+bspc rule -a Thunar state=floating

@@ -20,4 +20,4 @@ disabled = true
 format = "[](bold #cba6f7) [❯](bold #89b4fa)[❯](bold #eba0ac) [$branch](bold #eba0ac)"
 
 [directory]
-format = "[$path](#eba0ac)"
+format = "[$path](#89b3fa)"

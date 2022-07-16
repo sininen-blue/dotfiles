@@ -8,7 +8,7 @@ redshift &
 dunst &
 picom &
 
-rofi -no-lazy-grab -show drun -modi drun
+dunstify -t 2000 "Boot Sequence" "Finished"
 
 bspc monitor -d 1 2 3 4 5
 

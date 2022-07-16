@@ -91,3 +91,6 @@ XF86AudioPrev
 
 super + d
 	dunstify -t 4000 -h string:x-dunst-stack-tag:date "time" "$(date +"%I:%M %P")"
+
+super + w
+	dunstify -t 4000 -h string:x-dunst-stack-tag:wifi "network" "$(nmcli dev wifi list | grep "*" | grep -Eo " [0-9][0-9] " | tail -n 1)%"

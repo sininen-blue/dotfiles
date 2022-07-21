@@ -8,6 +8,7 @@ redshift &
 dunst &
 picom &
 
+./git/eww/target/release/eww open dashboard
 dunstify -t 2000 "Boot Sequence" "Finished"
 
 bspc monitor -d 1 2 3 4 5

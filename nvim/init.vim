@@ -16,5 +16,5 @@ EOF
 let g:catppuccin_flavour = "mocha" " latte, frappe, macchiato, mocha
 colorscheme catppuccin
 
-set wrap linebreak
+autocmd BufRead,BufNewFile *.md :setlocal wrap linebreak
 autocmd BufRead,BufNewFile *.md :Goyo

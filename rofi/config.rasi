@@ -12,4 +12,6 @@ configuration {
   display-drun: "   Apps ";
   display-run: "   Run ";
 }
-@import "/usr/share/rofi/themes/Arc.rasi"
+@import "/usr/share/rofi/themes/Arc-Dark.rasi"
+//@theme "/home/sininenblue/.local/share/rofi/themes/squared-everforest.rasi"
+@theme "/home/sininenblue/.local/share/rofi/themes/squared-nord.rasi"

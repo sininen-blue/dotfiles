@@ -89,8 +89,16 @@ XF86AudioPrev
 # keybindings for status
 #
 
+super + t
+	./git/eww/target/release/eww open dashboard
+super + shift + t
+	./git/eww/target/release/eww close dashboard
+
 super + d
 	dunstify -t 4000 -h string:x-dunst-stack-tag:date "time" "$(date +"%I:%M %P")"
 
 super + w
 	dunstify -t 4000 -h string:x-dunst-stack-tag:wifi "network" "$(nmcli dev wifi list | grep "*" | grep -Eo " [0-9][0-9] " | tail -n 1)%"
+
+super + b
+	dunstify -t 4000 -h string:x-dunst-stack-tag:battery "battery" "$(upower -i $(upower -e | grep BAT) | grep --color=never -E "state|to\ full|to\ empty|percentage" | sed -e 's/^\s*//' -e '/^$/d' | tr -s ' ')"

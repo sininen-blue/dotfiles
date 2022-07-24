@@ -49,7 +49,7 @@ super + shift + f
 alt + {_,shift + }Tab
     bspc node -f {next,prev}.local
 
-super + {h,n} 
+super + {h,l} 
     bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
@@ -77,6 +77,9 @@ XF86MonBrightnessUp
         light -A 5 && dunstify -t 800 -h string:x-dunst-stack-tag:brightness "Brightness" "$(light -G)"
 XF86MonBrightnessDown 
         light -U 5 && dunstify -t 800 -h string:x-dunst-stack-tag:brightness "Brightness" "$(light -G)"
+super + bracket{left,right}
+	light {-U,-A} 1
+
 
 XF86AudioPlay 
 	playerctl play-pause

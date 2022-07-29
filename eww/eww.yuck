@@ -1,3 +1,39 @@
-(include "./src/yuck/_windows.yuck")
-(include "./src/yuck/_widgets.yuck")
-(include "./src/yuck/_variables.yuck")
+;; Time Variables
+(defpoll hour :interval "10s" `date +%I`)
+(defpoll minute :interval "10s" `date +%M`)
+(defpoll day :interval "10s" `date "+%A"`)
+(defpoll date :interval "10s" `date "+%D"`)
+
+(defwidget clock [] 
+	(box	:class "time"
+			:orientation "v"
+			:space-evenly "false"
+			:valign "center"
+			:halign "center"
+	(box 	:orientation "h"
+			:class "date"
+			:space-evenly "false"
+	(label	:class "hour"
+			:text "${hour}")
+	(label	:class "separator-clock"
+			:text ":")		
+	(label	:class "min"
+			:text "${minute}"))
+	(box	:orientation "h"
+			:space-evenly "false"
+			:halign "center"
+	(label	:class "day"
+			:text "${date}"))
+	)	
+)
+
+(defwindow clock
+	:monitor 0
+	:geometry (geometry :x "-12px"
+			:y "0px"
+			:anchor "top right")
+	:stacking "fg"
+	:windowtype "desktop"
+	:wm-ignore true
+(clock))
+

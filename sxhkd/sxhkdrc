@@ -93,9 +93,9 @@ XF86AudioPrev
 #
 
 super + t
-	./git/eww/target/release/eww open dashboard
+	./git/eww/target/release/eww open clock
 super + shift + t
-	./git/eww/target/release/eww close dashboard
+	./git/eww/target/release/eww close clock
 
 super + d
 	dunstify -t 4000 -h string:x-dunst-stack-tag:date "time" "$(date +"%I:%M %P")"

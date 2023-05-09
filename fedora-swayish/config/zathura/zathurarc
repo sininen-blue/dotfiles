@@ -1,0 +1,5 @@
+map S toggle_statusbar
+
+set recolor true
+
+include catppuccin-mocha

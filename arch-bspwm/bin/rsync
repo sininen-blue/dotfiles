@@ -1,0 +1,8 @@
+#!/bin/bash
+
+
+if [[ "$1" == "--to" ]]; then
+  rclone sync --interactive ~/Documents google-drive:Documents
+elif [[ "$1" == "--from" ]]; then
+  rclone sync --interactive google-drive:Documents ~/Documents
+fi

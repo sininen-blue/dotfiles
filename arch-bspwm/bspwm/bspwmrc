@@ -1,0 +1,23 @@
+#! /bin/sh
+
+~/.config/bspwm/.fehbg &
+rclone mount google-drive: ~/drive/ --vfs-cache-mode full --daemon &
+sxhkd & 
+unclutter &
+dunst &
+
+bspc monitor -d 1 2 3 4 5
+
+bspc config border_width 1
+bspc config window_gap 0
+
+bspc config split_ratio 0.50
+bspc config single_monocle true
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+
+bspc config focused_border_color "#89b4fa"
+bspc config normal_border_color "#313244"
+
+bspc rule -a eww-greeting state=floating layer=above sticky=on

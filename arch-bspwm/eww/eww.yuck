@@ -1,0 +1,17 @@
+(defwindow greeting
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore "false"
+  :geometry (geometry
+    :x "-1px"
+    :y "1px"
+    :anchor "top right")
+  (greeting_layout))
+
+(defpoll date :interval "1m" "date +'%a %b %d %I:%M %P'") 
+
+(defwidget greeting_layout []
+  (box :class "greeting-box" :orientation "horizontal" :space-evenly "false"
+    (label :text date :class "date")
+  ))
+

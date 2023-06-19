@@ -1,0 +1,88 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty -e fish
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# program launcher
+super + p
+  rofi -show drun -modi drun
+
+# program launcher
+super + r
+  rofi -show run -modi run
+
+super + d
+	dunstify -t 2000 "Date and Time" "$(date +'%a %b %d %I:%M %P')"
+#
+# bspwm hotkeys
+#
+
+# quit/restart bspwm
+super + shift + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + shift + c
+	bspc node -c
+
+#
+# state/flags
+#
+
+# set the window state
+super + f
+	bspc node -t {floating,tiled}
+
+super + shift + f
+	bspc node -t fullscreen
+
+#
+# focus/swap
+#
+
+# cycle focus
+super + {h,j,k,l}
+    bspc node -f {west,south,north,east}.local
+
+# focus the next/previous desktop in the current monitor
+super + {Left,Right}
+	bspc desktop -f {prev,next}.local && ~/.config/sxhkd/desktops
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}' && ~/.config/sxhkd/desktops
+
+#
+# Add keybindings for volume and lightness
+#
+
+XF86AudioRaiseVolume 
+	~/.config/sxhkd/volume --set +10%
+XF86AudioLowerVolume 
+	~/.config/sxhkd/volume --set -10%
+XF86AudioMute 
+	~/.config/sxhkd/volume --mute
+XF86AudioMicMute 
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle 
+
+XF86MonBrightnessUp 
+        light -T 1.2 && dunstify -t 800 -h int:value:$(light -G) "Brightness"
+XF86MonBrightnessDown 
+        light -T 0.8 && dunstify -t 800 -h int:value:$(light -G) "Brightness"
+super + bracket{left,right}
+	light {-U,-A} 1
+
+
+XF86AudioPlay 
+	playerctl play-pause
+XF86AudioNext 
+	playerctl next
+XF86AudioPrev 
+	playerctl previous

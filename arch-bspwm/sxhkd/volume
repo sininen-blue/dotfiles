@@ -1,0 +1,25 @@
+#!/bin/bash
+
+get() {
+  VOLUME=$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')
+  dunstify -t 800 -h int:value:$VOLUME "Volume"
+}
+
+set() {
+  pactl set-sink-volume @DEFAULT_SINK@ $1
+}
+
+mute() {
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+  MUTE=$(pactl get-sink-mute @DEFAULT_SINK@)
+  dunstify -t 800 -h string:x-dunst-stack-tag:mute "Volume" "$MUTE"
+}
+
+if [[ "$1" == "--get" ]];then
+  get
+elif [[ "$1" == "--set" ]];then
+  set $2
+  get
+elif [[ "$1" == "--mute" ]];then
+  mute
+fi

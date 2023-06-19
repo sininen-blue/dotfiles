@@ -1,0 +1,23 @@
+#!/bin/bash
+
+occupied=$(bspc query -D -d .occupied --names)
+focused=$(bspc query -D -d .focused --names)
+
+desktops="1 2 3 4 5"
+
+index=0
+for desktop in $desktops
+do
+	if [[ ${occupied:index:1} == $desktop ]];then
+		desktops=${desktops//$desktop/ }
+		index=$(($index+2))
+	fi
+done
+
+focused=$(($focused-1))
+focused=$(($focused*2))
+desktops=$(echo $desktops | sed "s/\(.\{$focused\}\)./\1/")
+desktops=$(echo $desktops | sed -r "s/([0-9])//g")
+
+# dunstify -t 1000 -h string:x-dunst-stack-tag:desktops "Desktops" "<span color='#cdd6f4'><i><b>$desktops</b></i></span>"
+dunstify -t 1000 -h string:x-dunst-stack-tag:desktops "Desktops" "$desktops"

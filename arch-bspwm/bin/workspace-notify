@@ -1,0 +1,3 @@
+#!/bin/bash
+
+dunstify "Workspaces" "$(swaymsg --pretty -t get_workspaces | awk '/Workspace/ {print $2}' | tr '\n' ' ')"

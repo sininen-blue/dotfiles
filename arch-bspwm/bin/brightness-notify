@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DunstHint="string:x-dunst-stack-tag:brightnes"
+Duration="1400"
+
+dunstify -t $Duration -h $DunstHint "Brightness" "$(light -G)"

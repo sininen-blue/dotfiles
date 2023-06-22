@@ -1,0 +1,12 @@
+#!/bin/bash
+
+IsMuted=$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')
+DunstHint="string:x-dunst-stack-tag:volume"
+Duration="1400"
+
+if [[ $IsMuted == "no" ]]; then
+  dunstify -t $Duration -h $DunstHint "Volume" "$(pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}')"
+elif [[ $IsMuted == "yes" ]]; then
+  dunstify -t $Duration -h $DunstHint "Volume" "Muted"
+fi
+

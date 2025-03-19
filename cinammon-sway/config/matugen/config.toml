@@ -1,0 +1,5 @@
+[config]
+
+[templates.alacritty]
+input_path = 'templates/alacritty.toml'
+output_path = '~/.config/alacritty/colors.toml'

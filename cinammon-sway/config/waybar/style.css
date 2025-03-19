@@ -1,0 +1,112 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "FantasqueSansM Nerd Font Mono";
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: #0e1012;
+    color: #959396;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -2px #e03015;
+}
+
+#workspaces button {
+    padding: 0;
+    background-color: transparent;
+    color: #959396;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+    background-color: #181a1d;
+    box-shadow: inset 0 -2px #e03015;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode {
+    background-color: #32343a;
+    border-bottom: 2px solid #e03015;
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#wireplumber,
+#tray,
+#mode {
+    padding: 0 5px;
+    color: #959396;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left>widget:first-child>#workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right>widget:last-child>#workspaces {
+    margin-right: 0;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        color: transparent;
+    }
+}
+
+#battery.warning:not(.charging) {
+    color: #eb4d4b;
+}
+
+#battery.critical:not(.charging) {
+    color: #e03015;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network.disconnected {
+    color: #e03015;
+}
+
+#tray>.passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray>.needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}

@@ -1,0 +1,13 @@
+import = [
+	"~/.config/alacritty/catppuccin-mocha.toml"
+]
+
+[window]
+padding = { x = 6, y = 6 }
+dynamic_padding = true
+decorations = "Full"
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "FantasqueSansM Nerd Font Mono", style = "Regular" }
+size = 14

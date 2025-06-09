@@ -1,0 +1,15 @@
+(defcfg process-unmapped-keys yes)
+
+
+(deflayer base
+(layer-toggle layer1) _ _ _ _ _ _ _ _ _ _ _ _
+)
+
+(defsrc
+	caps	a		t		s	spc	o 		;	n		u	e		i		l		y
+)
+
+(deflayer layer1
+	_		lalt	lctrl	esc	ret	bspc	del	left	up	down	right	home	end
+)
+
